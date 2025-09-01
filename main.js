@@ -201,4 +201,79 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 1
         });
     });
+
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+        document.documentElement.style.setProperty('--mouse-y', `${y}%`);
+    });
+
+    // 모든 페이지의 base-background 애니메이션 처리
+    document.addEventListener('DOMContentLoaded', () => {
+        const baseBackground = document.querySelector('.base-background');
+        if (baseBackground) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrolled / maxScroll) * 100;
+                
+                baseBackground.style.animationPlayState = 
+                    scrolled > 0 ? 'running' : 'paused';
+            });
+        }
+    });
+
+    // 스크롤 애니메이션 처리
+    document.addEventListener('DOMContentLoaded', () => {
+        const baseBackground = document.querySelector('.base-background');
+        let lastScrollY = window.scrollY;
+        let animationFrameId = null;
+        let lastTime = 0;
+        
+        const lerp = (start, end, factor) => {
+            return start * (1 - factor) + end * factor;
+        };
+
+        const updateBackground = (currentTime) => {
+            if (!lastTime) lastTime = currentTime;
+            const deltaTime = currentTime - lastTime;
+            const scrolled = window.scrollY;
+            
+            // 부드러운 움직임을 위한 보간
+            lastScrollY = lerp(lastScrollY, scrolled, 0.1);
+            
+            const xOffset = lastScrollY * 0.1;
+            const yOffset = lastScrollY * 0.1;
+
+            baseBackground.style.backgroundPosition = `
+                ${-xOffset}px ${-yOffset}px,
+                ${xOffset}px ${-yOffset * 1.2}px,
+                ${-xOffset * 1.1}px ${yOffset}px,
+                ${xOffset * 0.9}px ${yOffset * 1.1}px,
+                center,
+                center
+            `;
+
+            lastTime = currentTime;
+            animationFrameId = requestAnimationFrame(updateBackground);
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!animationFrameId) {
+                animationFrameId = requestAnimationFrame(updateBackground);
+            }
+        });
+
+        // 스크롤이 멈췄을 때 부드럽게 정지
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+                lastTime = 0;
+            }, 150);
+        });
+    });
 });

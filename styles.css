@@ -71,7 +71,7 @@ main {
 }
 
 .hero-title {
-    font-size: 12vw;
+    font-size: 10vw;
     line-height: 0.9;
     font-weight: 800;
 }
@@ -691,6 +691,63 @@ footer {
 
 .gallery-grid img:hover {
     transform: scale(1.05);
+}
+
+@keyframes scrollPattern {
+    0% {
+        background-position: 
+            0 0,
+            20px 20px,
+            20px 0,
+            0 20px,
+            center,
+            center;
+    }
+    100% {
+        background-position: 
+            0 40px,
+            40px 60px,
+            40px 20px,
+            20px 60px,
+            center,
+            bottom;
+    }
+}
+
+.base-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #0e0e0e;
+    background-image: 
+        radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.03) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(255,255,255,0.02) 25%, transparent 25%);
+    background-size: 80px 80px, 80px 80px, 80px 80px, 80px 80px, 200% 200%, 200% 200%;
+    background-position: 0 0, 40px 40px, 40px 0, 0 40px, center, center;
+    animation: scrollPattern 8s linear infinite;
+    transition: background-position 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: background-position;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+@keyframes floatingPattern {
+    0% {
+        background-position: 0 0,
+            20px 20px,
+            20px 0;
+    }
+    100% {
+        background-position: 20px 20px,
+            0 0,
+            -20px 20px;
+    }
 }
 
 @media (max-width: 768px) {
