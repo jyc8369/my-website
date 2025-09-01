@@ -3,27 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node.js Projects - 전유찬 포트폴리오</title>
+    <title>Discord RPC Program - 전유찬 포트폴리오</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <main class="detail-page">
         <a href="index.html" class="back-button">← Back</a>
-        <h1 class="detail-title">Node.js Projects</h1>
+        <h1 class="detail-title">Discord RPC Program</h1>
         <div class="detail-content">
-            <div class="project-detail">
-                <h2>Node.js 기술 스택</h2>
-                <ul>
-                    <li>Express.js</li>
-                    <li>MongoDB</li>
-                    <li>RESTful API</li>
-                    <li>Socket.IO</li>
-                </ul>
-                <h2>주요 프로젝트</h2>
-                <div class="project-cards">
-                    <!-- 프로젝트 상세 내용 -->
+            <div class="program-showcase">
+                <div class="program-image">
+                    <img src="images/p1.png" alt="Discord RPC Program Preview">
+                </div>
+                <div class="program-info">
+                    <h2 class="program-title">프로그램 소개</h2>
+                    <p class="program-desc">Discord RPC를 사용하여 사용자 지정 상태를 표시할 수 있는 프로그램입니다. 간단한 설정으로 당신만의 독특한 상태 메시지를 Discord에 표시해보세요.</p>
+                    <div class="feature-list">
+                        <h3 class="feature-title">주요 기능</h3>
+                        <ul class="feature-items">
+                            <li>커스텀 상태 메시지 설정</li>
+                            <li>이미지 및 타이머 지원</li>
+                            <li>직관적인 사용자 인터페이스</li>
+                            <li>설정 저장 및 불러오기</li>
+                        </ul>
+                    </div>
+                    <a href="downloads/discord-rpc-setup.exe" class="download-button">
+                        프로그램 다운로드 V 2.0
+                    </a>
                 </div>
             </div>
+            <div class="scroll-section">
+                <div class="content-block left">
+                    <div class="content-image">
+                        <img src="images/pd1.png" alt="기능 1">
+                    </div>
+                    <div class="content-text">
+                        <h2>커스텀 프로그램 설정</h2>
+                        <p>본인이 하는 게임이 디스코드를 지원하지 않는다고요?<br>이 프로그램을 사용하면 비 지원 게임도 가능합니다.</p>
+                    </div>
+                </div>
+
+                <div class="content-block right">
+                    <div class="content-image">
+                        <img src="images/pd2.png" alt="기능 2">
+                    </div>
+                    <div class="content-text">
+                        <h2>정보 커스터마이징</h2>
+                        <p>많은 텍스트를 사용자 지정으로 띄울 수 있습니다.<br>추가적인 프로필 설명창으로도 사용하실 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="content-block left">
+                    <div class="content-image">
+                        <img src="images/pd3.png" alt="기능 3">
+                    </div>
+                    <div class="content-text">
+                        <h2>인앱 예시</h2>
+                        <p>원하는 대로 Discord 상태 메시지를 설정하세요. 당신만의 독특한 메시지로 presence를 꾸며보세요.</p>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // 스크롤 애니메이션
+                const observerOptions = {
+                    threshold: 0.2
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.content-block').forEach(block => {
+                    observer.observe(block);
+                });
+            </script>
         </div>
     </main>
 </body>
