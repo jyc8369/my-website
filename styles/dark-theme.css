@@ -1,0 +1,30 @@
+:root {
+  --bg-gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  --text-color: #ffffff;
+  --secondary-color: #a0a0a0;
+}
+
+body {
+  background: var(--bg-gradient-dark);
+  color: var(--text-color);
+}
+
+.container {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+  background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+  border: 1px solid #333;
+}
+
+a {
+  color: #66b3ff;
+}
+
+a:hover {
+  color: #99ccff;
+}
