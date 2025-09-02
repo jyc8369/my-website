@@ -62,9 +62,32 @@
                         <h2>디스코드 앱 사용 예시</h2>
                         <p>원하는 대로 Discord 상태 메시지를 설정하세요. <br>당신만의 독특한 메시지로 presence를 꾸며보세요.</p>
                     </div>
-                </div>
-            </div>
 
+                            
+                        </div>
+                        <div class="content-block right" style="margin-top: 200px;">
+                            <div class="content-text">
+                                <h2>이 프로젝트의 개발 동기</h2>
+                                <p>이 프로젝트는 Discord 사용 경험을 향상시키기 위해 개발되었습니다.
+                                    <br>기본적으로 디스코드는 게임 활동상태를 공유할 수 있습니다.
+                                    <br>하지만, 기본적으로 제공 되는 기능은 지원하지 않는 게임이나, 커스터마이징의 한계가 명확했습니다.
+                                    <br>이 프로젝트는 그 한계를 제거하기 위해 개발하게 되었습니다.
+                                    <br>사용자가 자신의 활동 상태를 자유롭게 설정하고, 
+                                    <br>더 나아가 자신만의 독특한 활동상태를 만들 수 있도록 돕는 것이 목표입니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="content-block left" style="margin-top: 200px;">
+                            <div class="content-text">
+                                <h2>개발 환경 및 과정</h2>
+                                <p>기본적으로 프로젝트는 PYTHON을 기반으로 개발되었습니다.
+                                    <br>PyQt6를 사용하여 직관적인 GUI를 구현하였고, pypresence 라이브러리를 활용하여 Discord와의 연동을 처리했습니다.
+                                    <br>또한 threading를 사용하여 백그라운드에서 상태 업데이트를 원활하게 수행할 수 있도록 했습니다.
+                                    <br>psutil를 사용하여 프로그램을 인식하여 자동으로 프로필에 표시할 수 있도록 했습니다.
+                                </p>
+                            </div>
+            </div>
+                    
             <script>
                 // 스크롤 애니메이션
                 const observerOptions = {
@@ -79,8 +102,9 @@
                     });
                 }, observerOptions);
 
-                document.querySelectorAll('.content-block').forEach(block => {
-                    observer.observe(block);
+                // 콘텐츠 블록과 텍스트 요소 모두 관찰
+                document.querySelectorAll('.content-block, .content-text').forEach(element => {
+                    observer.observe(element);
                 });
             </script>
         </div>
